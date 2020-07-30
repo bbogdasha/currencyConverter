@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="360.0" style="-fx-background-color: #3CC;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bogdan.Controller">
+   <children>
+      <AnchorPane prefHeight="120.0" prefWidth="360.0" style="-fx-background-color: #099;">
+         <children>
+            <Text layoutX="29.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Currency">
+               <font>
+                  <Font name="Microsoft Yi Baiti" size="48.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="30.0" layoutY="143.0" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #9FF; -fx-background-radius: 10;">
+         <children>
+            <TextField fx:id="day" layoutX="23.0" layoutY="6.0" prefHeight="48.0" prefWidth="48.0" promptText="dd" AnchorPane.leftAnchor="23.0">
+               <font>
+                  <Font name="Lucida Console" size="19.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="month" layoutX="102.0" layoutY="6.0" prefHeight="48.0" prefWidth="48.0" promptText="mm">
+               <font>
+                  <Font name="Lucida Console" size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="year" layoutX="183.0" layoutY="6.0" prefHeight="48.0" prefWidth="96.0" promptText=" yyyy" AnchorPane.rightAnchor="23.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <font>
+                  <Font name="Lucida Console" size="19.0" />
+               </font>
+            </TextField>
+            <Text layoutX="77.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="18.13671875">
+               <font>
+                  <Font name="Lucida Console" size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="156.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" wrappingWidth="18.13671875">
+               <font>
+                  <Font name="Lucida Console" size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Button fx:id="getDate" layoutX="132.0" layoutY="220.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #9FF;" text="Rate">
+         <font>
+            <Font name="Microsoft Yi Baiti" size="24.0" />
+         </font>
+      </Button>
+      <Text fx:id="setSale" layoutX="30.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sale:">
+         <font>
+            <Font name="Microsoft Yi Baiti" size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="setPurchase" layoutX="30.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase:">
+         <font>
+            <Font name="Microsoft Yi Baiti" size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
