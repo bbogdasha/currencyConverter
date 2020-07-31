@@ -2,7 +2,8 @@ package com.bogdan;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.text.Text;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,6 +12,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -24,47 +28,84 @@ public class Controller {
     private URL location;
 
     @FXML
-    private TextField day;
+    private DatePicker getAllDate;
 
     @FXML
-    private TextField month;
+    private Text setRate;
 
     @FXML
-    private TextField year;
+    private ChoiceBox<String> choiceBoxMain;
 
     @FXML
-    private Button getDate;
+    private Button getData;
 
     @FXML
-    private Text setSale;
-
-    @FXML
-    private Text setPurchase;
+    private ChoiceBox<?> choiceBoxConvert;
 
     @FXML
     void initialize() {
-        getDate.setOnAction(event -> {
-            String output = getUrlContent("https://api.privatbank.ua/p24api/exchange_rates?json&date=" + day.getText().trim() + "." + month.getText().trim() + "." + year.getText().trim());
-            System.out.println(output);
 
-            if (!output.isEmpty()) {
-                JSONObject object = new JSONObject(output);
-                setSale.setText("Sale: " + object.getJSONArray("exchangeRate"));
+        List<String> cur = new ArrayList<>();
+        cur.add("USD");
+        cur.add("AZN");
+        cur.add("BYN");
+        cur.add("CAD");
+        cur.add("CHF");
+        choiceBoxMain.getItems().addAll(cur);
+        choiceBoxMain.setValue("USD");
 
+        getData.setOnAction(event -> {
 
-                List<String> result = new ArrayList<>();
-                JSONArray arr = object.getJSONArray("exchangeRate");
-                for (int i = 0; i < arr.length(); i++) {
-                    String url = arr.getJSONObject(i).toString();
-                    result.add(url);
-                    if (url.contains("USD")) {
-                        System.out.println(result.get(i));
-                    }
-                }
+            LocalDate isDate = getAllDate.getValue();
+            ChronoLocalDate chronoDate = ((isDate != null) ? getAllDate.getChronology().date(isDate) : null);
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-
-                //setPurchase.setText("Purchase: " + object.getJSONObject("exchangeRate").getString("purchaseRateNB"));
+            String output = "";
+            if (chronoDate != null) {
+                output = getUrlContent("https://api.exchangeratesapi.io/" + dateFormatter.format(chronoDate) + "?base=" + choiceBoxMain.getValue());
             }
+
+//            if (!output.isEmpty()) {
+//                JSONObject object = new JSONObject(output);
+//                JSONArray arr = object.getJSONArray("exchangeRate");
+//
+//                double getSale = 0;
+//
+//                JSONObject block = arr.getJSONObject(i);
+//                if (block.toString().contains(choiceBoxMain.getValue())) {
+//                    if (block.toString().contains("saleRate") && block.toString().contains("purchaseRate")) {
+//                        getSale = block.getDouble("saleRate");
+//                    } else {
+//                        setRate.setText("Sale: " + getSale);
+//                    }
+//                }
+//
+//                setRate.setText("Sale: " + getSale);
+//            }
+
+//            if (!output.isEmpty()) {
+//                JSONObject object = new JSONObject(output);
+//                JSONArray arr = object.getJSONArray("exchangeRate");
+//
+//                double getSale = 0;
+//                double getPurchase = 0;
+//
+//                for (int i = 0; i < arr.length(); i++) {
+//                    JSONObject block = arr.getJSONObject(i);
+//                    if (block.toString().contains(choiceBox.getValue())) {
+//                        if (block.toString().contains("saleRate") && block.toString().contains("purchaseRate")) {
+//                            getSale = block.getDouble("saleRate");
+//                            getPurchase = block.getDouble("purchaseRate");
+//                        } else {
+//                            setSale.setText("Sale: " + getSale);
+//                            setPurchase.setText("Purchase: " + getPurchase);
+//                        }
+//                        break;
+//                    }
+//                }
+//                setSale.setText("Sale: " + getSale);
+//                setPurchase.setText("Purchase: " + getPurchase);
+//            }
         });
     }
 
