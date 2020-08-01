@@ -12,10 +12,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller {
 
@@ -60,7 +57,7 @@ public class Controller {
         JSONObject object = new JSONObject(outputCurrencyList);
         JSONObject results = object.getJSONObject("results");
         Iterator<String> keys = results.keys();
-        List<String> currency = new ArrayList<>();
+        Set<String> currency = new HashSet<>();
         while(keys.hasNext()) {
             currency.add(keys.next());
         }

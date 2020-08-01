@@ -35,7 +35,7 @@
       </Text>
       <AnchorPane layoutX="36.0" layoutY="228.0" prefHeight="60.0" prefWidth="102.0" style="-fx-background-color: #9FF; -fx-background-radius: 10;" AnchorPane.leftAnchor="36.0">
          <children>
-            <ComboBox fx:id="choiceBoxMain" editable="true" layoutX="11.0" layoutY="11.0" prefHeight="38.0" prefWidth="81.0" />
+            <ComboBox fx:id="choiceBoxMain" editable="true" layoutX="11.0" layoutY="11.0" prefHeight="38.0" prefWidth="81.0" visibleRowCount="6" />
          </children>
       </AnchorPane>
       <Button fx:id="getData" layoutX="142.0" layoutY="303.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="78.0" style="-fx-background-radius: 10; -fx-background-color: #9FF; -fx-text-fill: #000; -fx-font-size: 18; -fx-font-family: Microsoft Yi Baiti;" text="Rate">
@@ -45,7 +45,7 @@
       </Button>
       <AnchorPane layoutX="223.0" layoutY="228.0" prefHeight="60.0" prefWidth="102.0" style="-fx-background-color: #9FF; -fx-background-radius: 10;">
          <children>
-            <ComboBox fx:id="choiceBoxConvert" editable="true" layoutX="11.0" layoutY="11.0" prefHeight="38.0" prefWidth="81.0" />
+            <ComboBox fx:id="choiceBoxConvert" editable="true" layoutX="11.0" layoutY="11.0" prefHeight="38.0" prefWidth="81.0" visibleRowCount="6" />
          </children>
       </AnchorPane>
       <Text layoutX="31.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select date:">
