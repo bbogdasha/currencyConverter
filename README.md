@@ -1,7 +1,7 @@
 # Currency converter
 
 The application allows you to get the exchange rate of two currencies. The application has a small functionality and one note. Free API provided service [free.currencyconverterapi.com](https://free.currencyconverterapi.com).
-The free service has some limitations: Free version API only allows up to 1 year earlier.
+**The free service has some limitations: Free version API only allows up to 1 year earlier.**
 
 ### Tech
 
